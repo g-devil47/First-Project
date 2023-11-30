@@ -1,0 +1,5 @@
+print("Greetings")
+users_name = input("Please Enter your Name:\n")
+username = input(users_name + " Please Enter a username:\n")
+users_password = input("Please Enter a Password:\n")
+input(users_name + " Your Credentials have been Saved Succesfully!")

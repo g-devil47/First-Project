@@ -1,0 +1,1 @@
+input("Enter the website you want to"/n)
