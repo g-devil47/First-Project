@@ -48,4 +48,3 @@ users_emergency_fund = input("Do You have any Emergency Funds?\n")
 
 #savings
 users_money_in_saving = input("Do much money do you have in savings?\n")
-hi
