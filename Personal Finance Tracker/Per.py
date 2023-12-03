@@ -16,19 +16,34 @@ def save_credentials():
     folder_path = f"./{users_name}"
     os.makedirs(folder_path, exist_ok=True)
 
-    # Create an Excel file
+    # Create an Excel file or use an existing one
     excel_file_path = f"{folder_path}/credentials.xlsx"
 
-    # Create a DataFrame with user information
-    user_data = {
-        "Name": [users_name],
-        "Username": [username],
-        "Password": [users_password],
-        "Email": [users_email_id],
-        "Phone Number": [users_phone_number]
-    }
+    if os.path.exists(excel_file_path):
+        # If the file exists, read the existing data
+        existing_data = pd.read_excel(excel_file_path)
+        
+        # Append the new data to the existing DataFrame
+        new_data = {
+            "Name": [users_name],
+            "Username": [username],
+            "Password": [users_password],
+            "Email": [users_email_id],
+            "Phone Number": [users_phone_number]
+        }
 
-    df = pd.DataFrame(user_data)
+        df = pd.concat([existing_data, pd.DataFrame(new_data)], ignore_index=True)
+    else:
+        # If the file doesn't exist, create a new DataFrame
+        user_data = {
+            "Name": [users_name],
+            "Username": [username],
+            "Password": [users_password],
+            "Email": [users_email_id],
+            "Phone Number": [users_phone_number]
+        }
+
+        df = pd.DataFrame(user_data)
 
     # Write the DataFrame to an Excel sheet
     with pd.ExcelWriter(excel_file_path, engine='xlsxwriter') as writer:
