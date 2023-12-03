@@ -10,7 +10,7 @@ def save_credentials():
     users_email_id = entry_email.get()
     users_phone_number = entry_phone.get()
 
-    result_label.config(text=f"{users_name}, your credentials have been successfully saved!")
+    result_label.config(text=f"{users_name}, Your Credentials have been Successfully Saved!")
 
     # Create a folder with the user's name
     folder_path = f"./{users_name}"
